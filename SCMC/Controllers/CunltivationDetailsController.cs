@@ -57,7 +57,7 @@ namespace SCMC.Controllers
                     cultivationDetails = cultivationDetails.OrderBy(s => s.Farmer.FirsName);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(cultivationDetails.ToPagedList(pageNumber, pageSize));
         }

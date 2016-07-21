@@ -54,7 +54,7 @@ namespace SCMC.Controllers
                     farmers = farmers.OrderBy(s => s.FirsName);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(farmers.ToPagedList(pageNumber, pageSize));
         }
