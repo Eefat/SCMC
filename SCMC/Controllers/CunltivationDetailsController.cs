@@ -22,7 +22,7 @@ namespace SCMC.Controllers
         //    var cunltivationDetails = db.CunltivationDetails.Include(c => c.Farmer);
         //    return View(cunltivationDetails.ToList());
         //}
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, DateTime? dateOfPlanting, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, DateTime? deliverDate, DateTime? dateOfPlanting, int? page)
         {
 
             ViewBag.CurrentSort = sortOrder;
@@ -41,6 +41,7 @@ namespace SCMC.Controllers
                           select s;
             if (!String.IsNullOrEmpty(searchString)) { cultivationDetails = cultivationDetails.Where(s => s.Farmer.FirsName.ToUpper().Contains(searchString.ToUpper()) || s.Farmer.FirsName.ToUpper().Contains(searchString.ToUpper())); }
             if (dateOfPlanting != null) { cultivationDetails = cultivationDetails.Where(s => s.DateofPlanting == dateOfPlanting); }
+            if (deliverDate != null) { cultivationDetails = cultivationDetails.Where(s => s.DeliverDate == deliverDate); }
             switch (sortOrder)
             {
                 case "name_desc":
