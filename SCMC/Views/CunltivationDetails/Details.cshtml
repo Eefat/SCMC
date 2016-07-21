@@ -1,0 +1,74 @@
+﻿@model SCMS.Models.CunltivationDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CunltivationDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Farmer.FirsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farmer.FirsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LandArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LandArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaneVariety)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaneVariety)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantRatoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantRatoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofPlanting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateofPlanting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

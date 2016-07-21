@@ -1,0 +1,93 @@
+﻿@model SCMS.Models.Farmer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Farmer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NationalIdNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NationalIdNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+
+        <dt> @Html.DisplayNameFor(model => model.CunltivationDetails) </dt>
+        <dd>
+            <table class="table">
+                <tr> 
+                    <th>Land Area</th> 
+                    <th>Cane Variety</th> 
+                    <th>Plant/Ratoon</th> 
+                    <th>Date of Planting</th> 
+                    <th>Estimated Time</th> 
+                    <th>Deliver Date</th> 
+                </tr>
+                @foreach (var item in Model.CunltivationDetails)
+                {
+                 <tr>
+                     <td> @Html.DisplayFor(modelItem => item.LandArea) </td>
+                     <td> @Html.DisplayFor(modelItem => item.CaneVariety) </td> 
+                     <td> @Html.DisplayFor(modelItem => item.PlantRatoon) </td> 
+                     <td> @Html.DisplayFor(modelItem => item.DateofPlanting) </td> 
+                     <td> @Html.DisplayFor(modelItem => item.EstimatedTime) </td> 
+                     <td> @Html.DisplayFor(modelItem => item.DeliverDate) </td> 
+                  </tr> 
+                }
+            </table>
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

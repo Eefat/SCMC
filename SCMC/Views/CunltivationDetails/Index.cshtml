@@ -1,0 +1,99 @@
+﻿@*@model IEnumerable<SCMS.Models.CunltivationDetail>*@
+
+@model PagedList.IPagedList<SCMS.Models.CunltivationDetail>
+@using PagedList.Mvc;
+
+ 
+
+@{
+    ViewBag.Title = "Farmer History";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "CunltivationDetails", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <td>
+                Find by name:
+            </td>
+            <td>
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Date of Planting:
+            </td>
+            <td>
+                @Html.TextBox("dateOfPlanting", ViewBag.CurrentFilter as DateTime?)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Search" />
+}
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Farmer.FirsName)*@
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+           Land Area
+        </th>
+        <th>
+            Cane Variety
+        </th>
+        <th>
+            Plant/Ratoon
+        </th>
+        <th>
+            Date of Planting
+        </th>
+        <th>
+           Estimated Time)
+        </th>
+        <th>
+            @Html.ActionLink("Deliver Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farmer.FirsName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LandArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaneVariety)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlantRatoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofPlanting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliverDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+<br /> Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
